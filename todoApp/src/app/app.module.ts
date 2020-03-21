@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+// Moduller ile componentler birleştirilen bundle
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -11,6 +11,6 @@ import { AppComponent } from './app.component';
     BrowserModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent]//çalıştırılabilir ilk component
 })
 export class AppModule { }
