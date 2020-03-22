@@ -1,18 +1,31 @@
 import { Component } from '@angular/core';
-import {Movies} from '../movie.datasource';
 import { Movie } from '../movie';
+import { MovieService } from '../movie.service';
 
 @Component({
-    selector:'movies',
+    selector: 'movies',
     templateUrl: 'movies.component.html',
 
 })
-export class MoviesComponent{
-    title='Movie List';
-    movies= Movies;
+export class MoviesComponent {
+    title = 'Movie List';
+    movies: Movie[];
     selectedMovie: Movie;
-    
-    onSelect(movie:Movie):void{
-        this.selectedMovie=movie;
+
+    constructor(private movieService: MovieService) { }
+
+    ngOnInit(): void {// nesne üretildikten sonra çalışır
+        this.getMovies();
+    }
+
+    onSelect(movie: Movie): void {
+        this.selectedMovie = movie;
+    }
+
+    getMovies(): void {
+        this.movieService.getMovies()
+            .subscribe(movies => {
+                this.movies = movies;
+            });
     }
 }
